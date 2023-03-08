@@ -10,31 +10,79 @@
             box-sizing: border-box;
             margin: 0;
         }
+
         body {
-            border: 10px solid green;
+            border: 100px solid rgb(16, 111, 16);
             min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            background: rgb(16, 111, 16);
+            
         }
 
         header {
-            background: green;
-            color: white;
+            color: lightgreen;
+            text-align: center;
+            padding: 10px;
+            
         }
 
 
         main {
             flex: auto;
+            background: lightgreen;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        main li {
+            border-bottom: 1px solid green;
+            padding: 5px 0;
+        }
+
+        main ul {
+            padding: 0;
+            list-style: none;
         }
 
         footer {
             display: flex;
+            padding-top: 5px;
+            margin-top: 10px;
+            
         }
         
         footer input {
             flex: auto;
             padding: 5px;
+            border-radius: 10px;
+        }
+
+        .adc{
+            border-radius: 5px 5px;
+            background: rgb(198, 248, 198);
+            margin-left: 5px;
+        }
+
+        .adc:hover {
+            background: rgb(160, 255, 160);
+            box-shadow: inset  1.5px 1.5px 1.5px rgb(41, 41, 41);
+            text-shadow: none;
+            transition: 0.5s;
+        }
+
+        .limp {
+            border-radius: 5px 5px;
+            background: rgb(198, 248, 198);
+            margin-left: 5px;
+        }
+
+        .limp:hover {
+            background: rgb(160, 255, 160);
+            box-shadow: inset  1.5px 1.5px 1.5px rgb(41, 41, 41);
+            text-shadow: none;
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -48,21 +96,30 @@
     <footer>
     <input>
 
-        <button onclick="add()">adicionar</button>
+        <button class="adc" onclick="add()">adicionar</button>
+        <button class="limp" onclick="limpar()">Limpar lista</button>
     </footer>
     <script>
 
     // estado da aplicação
-    const tarefas = ['Estudar HTML', 'Estudar CSS', 'Estudar JS']
+    const tarefas = []
+    const input = document.querySelector("input")
 
     // alteradores de estado da aplicação
         function add() {
+             
+            if(input.value==""){
+                alert("Escreva uma tarefa")
+            }
+            else{
             const input = document.querySelector("input")
-            const tarefa = input.value 
-            tarefas.push(tarefa)
-            input.value = ""
-            render()
+                const tarefa = input.value 
+                tarefas.push(tarefa)
+                input.value = ""
+                render()
 
+            }
+            
         }
 
         // mostrar estado na tela 
@@ -78,8 +135,16 @@
 
         }
 
+        function limpar() {
+                tarefas.length = 0;
+                render()
+        }
+                
+
         // iniciar 
         render()
+        
+        
     </script>
 
 
